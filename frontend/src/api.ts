@@ -21,8 +21,9 @@ export async function fetchRoutes() {
   return handleResponse<CityRoute[]>(response);
 }
 
-export async function fetchTracks() {
-  const response = await fetch(`${API_BASE}/api/tracks`);
+export async function fetchTracks(userId?: string) {
+  const query = userId ? `?user_id=${encodeURIComponent(userId)}` : "";
+  const response = await fetch(`${API_BASE}/api/tracks${query}`);
   return handleResponse<Track[]>(response);
 }
 
