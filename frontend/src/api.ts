@@ -21,17 +21,29 @@ export async function fetchRoutes() {
   return handleResponse<CityRoute[]>(response);
 }
 
-export async function fetchTracks() {
-  const response = await fetch(`${API_BASE}/api/tracks`);
+export async function fetchTracks(userId?: string) {
+  const query = userId ? `?user_id=${encodeURIComponent(userId)}` : "";
+  const response = await fetch(`${API_BASE}/api/tracks${query}`);
   return handleResponse<Track[]>(response);
 }
 
 export async function sendTrack(userId: string, points: TrackPoint[]) {
   const payload: Track = { user_id: userId, points };
-  const response = await fetch(`${API_BASE}/api/tracks`, {
+  const query = `?user_id=${encodeURIComponent(userId)}`;
+  const response = await fetch(`${API_BASE}/api/tracks${query}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  return handleResponse<{ received_points: number; message: string }>(response);
+  return handleResponse<{ received_points: number; message: string; user_id: string }>(
+    response,
+  );
+}
+
+export async function fetchTrackForUser(userId: string) {
+  return fetchTracks(userId);
+}
+
+export async function uploadTrackForUser(userId: string, points: TrackPoint[]) {
+  return sendTrack(userId, points);
 }

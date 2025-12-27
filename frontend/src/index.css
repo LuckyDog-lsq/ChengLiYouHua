@@ -94,6 +94,12 @@ a {
   margin-top: 18px;
 }
 
+.grid--two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -139,6 +145,154 @@ a {
   background: #1d4ed8;
 }
 
+.button--ghost {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  min-width: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tab {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: white;
+  border-color: #1d4ed8;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.toolbar__label {
+  font-size: 14px;
+  color: #475569;
+}
+
+.map {
+  background: radial-gradient(circle at 20% 20%, #e0f2fe, #f8fafc 35%), #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.map svg {
+  width: 100%;
+  height: 320px;
+  display: block;
+}
+
+.map__polyline {
+  fill: none;
+  stroke: #2563eb;
+  stroke-width: 1.6;
+  opacity: 0.8;
+}
+
+.map__polyline--route {
+  stroke: #0f172a;
+  stroke-dasharray: 4 3;
+  opacity: 0.9;
+}
+
+.map__point {
+  fill: #f97316;
+  stroke: #f97316;
+  opacity: 0.95;
+}
+
+.map__legend {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.map__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.map__chip {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.map__chip--route {
+  background: #0f172a;
+}
+
+.map__chip--track {
+  background: #2563eb;
+}
+
+.map__chip--point {
+  background: #f97316;
+}
+
+.map--empty {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+}
+
+.callout {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.table th {
+  color: #475569;
+  font-weight: 600;
+}
+
+.table tr:hover {
+  background: #f8fafc;
+}
+
 .text-error {
   color: #b91c1c;
 }
@@ -146,5 +300,9 @@ a {
 @media (max-width: 720px) {
   .hero {
     flex-direction: column;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
   }
 }

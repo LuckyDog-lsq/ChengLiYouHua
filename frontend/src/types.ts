@@ -7,6 +7,8 @@ export type ContentPoint = {
   longitude: number;
   geofence_radius_m: number;
   audio_url?: string | null;
+  owner_user_id?: string | null;
+  permissions?: Permission[];
 };
 
 export type RouteWaypoint = {
@@ -23,6 +25,7 @@ export type CityRoute = {
   theme: string;
   distance_km: number;
   waypoints: RouteWaypoint[];
+  created_by?: string | null;
 };
 
 export type TrackPoint = {
@@ -34,4 +37,16 @@ export type TrackPoint = {
 export type Track = {
   user_id: string;
   points: TrackPoint[];
+};
+
+export type Permission = {
+  resource: "content" | "routes" | "tracks" | "users";
+  actions: ("create" | "read" | "update" | "delete" | "plan")[];
+};
+
+export type UserProfile = {
+  id: string;
+  display_name: string;
+  role: "viewer" | "editor" | "planner" | "admin";
+  permissions: Permission[];
 };

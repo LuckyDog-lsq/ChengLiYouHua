@@ -59,6 +59,7 @@ class TrackIngestResponse(BaseModel):
 
     received_points: int
     message: str
+    user_id: str
 
 
 class HealthStatus(BaseModel):
